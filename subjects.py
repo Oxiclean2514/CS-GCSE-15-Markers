@@ -1,11 +1,13 @@
 # Initializing required arrays and variables
 Choices = []
 Subjects = ["physics", "chemistry", "history", "geography", "computer science"]
-Physics = 0
-Chemistry = 0
-History = 0
-Geography = 0
-Computer_Science = 0
+Subject_Numbers = [0, 0, 0, 0, 0]
+Physics = []
+Chemistry = []
+History = []
+Geography = []
+Computer_Science = []
+
 
 # Allowing for input of data
 for i in range(5):
@@ -18,7 +20,10 @@ for i in range(5):
         print("Please enter second subject choice")
         Second_Choice = input().lower()
         if (First_Choice and Second_Choice) in Subjects:
-            Valid = True
+            if First_Choice != Second_Choice:
+                Valid = True
+            else:
+                print("Both subjects cannot be the same, please enter them again.")
         else:
             print("One of those subjects does not exist, please enter them again.")
     # Append name and choices to array
@@ -26,14 +31,21 @@ for i in range(5):
     # Update subject numbers
     for j in [First_Choice, Second_Choice]:
         if j == "physics":
-            Physics = Physics + 1
+            Subject_Numbers[0] = Subject_Numbers[0] + 1
+            Physics.append(Name)
         elif j == "chemistry":
-            Chemistry = Chemistry + 1
+            Subject_Numbers[1] = Subject_Numbers[1] + 1
+            Chemistry.append(Name)
         elif j == "history":
-            History = History + 1
+            Subject_Numbers[2] = Subject_Numbers[2] + 1
+            History.append(Name)
         elif j == "geography":
-            Geography = Geography + 1
+            Subject_Numbers[3] = Subject_Numbers[3] + 1
+            Geography.append(Name)
         elif j == "computer science":
-            Computer_Science = Computer_Science + 1
+            Subject_Numbers[4] = Subject_Numbers[4] + 1
+            Computer_Science.append(Name)
 
-print(Choices)
+for h in range(5):
+    print(str(Subject_Numbers[h]) + " Students have chosen " + Subjects[h])
+
