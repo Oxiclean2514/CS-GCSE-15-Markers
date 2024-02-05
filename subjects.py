@@ -1,6 +1,6 @@
 # Initializing required arrays and variables
 Choices = []
-Subjects = ["physics", "chemistry", "history", "geography", "computer science"]
+Subjects = ["Physics", "Chemistry", "History", "Geography", "Computer Science"]
 Subject_Numbers = [0, 0, 0, 0, 0]
 Subject_Groups = []
 Physics = []
@@ -11,7 +11,8 @@ Computer_Science = []
 Unallocated = []
 maxGroupSize = 20
 minGroupSize = 10
-numberOfStudents = 5
+numberOfStudents = 60
+Spare_Places = []
 
 # Allowing for input of data
 for i in range(numberOfStudents):
@@ -92,6 +93,32 @@ for j in range(5):
 Students = ', '.join(Unallocated)
 print("Unallocated Students: " + Students)
 
+# Calculates spare places and places into an array
+def calculateSparePlaces(Subject):
+    if len(Subject) > 20:
+        sparePlaces = 40 - len(Subject)
+    else:
+        sparePlaces = 20 - len(Subject)
+    return sparePlaces
+Spare_Places[0] = calculateSparePlaces(Physics)
+Spare_Places[1] = calculateSparePlaces(Chemistry)
+Spare_Places[2] = calculateSparePlaces(History)
+Spare_Places[3] = calculateSparePlaces(Geography)
+Spare_Places[4] = calculateSparePlaces(Computer_Science)
+
+# Prints spare places for each subject and calculates total
+totalSparePlaces = 0
+print("Spare Places:")
+for h in range(5):
+    print(Subjects[h] + ": " + str(Spare_Places[h]))
+    totalSparePlaces = totalSparePlaces + Spare_Places[h]
+print("Total spare places: " + str(totalSparePlaces))
+print("Total unallocated places: " + str(len(Unallocated))
+# Works out whether spare places can cover unallocated places
+if totalSparePlaces > len(Unallocated):
+    print("There are enough spare places to cover the unallocated students")
+else:
+    print("There are not enough spare places to cover the unallocated students")
 
         
     
