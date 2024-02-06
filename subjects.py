@@ -36,21 +36,22 @@ for i in range(numberOfStudents):
     Choices.append([Name, First_Choice, Second_Choice])
     # Update subject numbers and add student names to appropriate subject array
     for j in [First_Choice, Second_Choice]:
-        if j == "physics":
-            Subject_Numbers[0] = Subject_Numbers[0] + 1
-            Physics.append(Name)
-        elif j == "chemistry":
-            Subject_Numbers[1] = Subject_Numbers[1] + 1
-            Chemistry.append(Name)
-        elif j == "history":
-            Subject_Numbers[2] = Subject_Numbers[2] + 1
-            History.append(Name)
-        elif j == "geography":
-            Subject_Numbers[3] = Subject_Numbers[3] + 1
-            Geography.append(Name)
-        elif j == "computer science":
-            Subject_Numbers[4] = Subject_Numbers[4] + 1
-            Computer_Science.append(Name)
+        match j:
+            case "physics":
+                Subject_Numbers[0] = Subject_Numbers[0] + 1
+                Physics.append(Name)
+            case "chemistry":
+                Subject_Numbers[1] = Subject_Numbers[1] + 1
+                Chemistry.append(Name)
+            case "history":
+                Subject_Numbers[2] = Subject_Numbers[2] + 1
+                History.append(Name)
+            case "geography":
+                Subject_Numbers[3] = Subject_Numbers[3] + 1
+                Geography.append(Name)
+            case "computer science":
+                Subject_Numbers[4] = Subject_Numbers[4] + 1
+                Computer_Science.append(Name)
 
 # Print number of students for each subject
 for h in range(5):
