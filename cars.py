@@ -22,9 +22,9 @@ print("Type 2 for a Saloon. Price: Rs 4.95 lakh")
 print("Type 3 for an Estate. Price: Rs 6.25 lakh")
 valid = False
 # Checks input is a valid option
-while not valid:
+while valid != True:
     chosenCar = input()
-    if chosenCar in ["1", "2", "3"]:
+    if chosenCar == ("1" or "2" or "3"):
         valid = True
     else:
         print("Invalid Input. Please try again.")
