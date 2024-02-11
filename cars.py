@@ -12,8 +12,10 @@ Prices = {
 newCarPrice = 0
 tradeInPrice = 0
 extrasPrice = 0
+discounts = 0
 totalPrice = 0
 Purchase = []
+repeatCustomer = False
 
 # Allow customers to choose a car to purchase
 print("Please choose which car you would like to purchase:")
@@ -24,7 +26,7 @@ valid = False
 # Checks input is a valid option
 while valid != True:
     chosenCar = input()
-    if chosenCar == ("1" or "2" or "3"):
+    if (chosenCar == "1") or (chosenCar == "2") or (chosenCar == "3"):
         valid = True
     else:
         print("Invalid Input. Please try again.")
@@ -39,7 +41,7 @@ elif chosenCar == "3":
     newCarPrice = Prices["estate"]
     Purchase.append("Estate")
 
-# Allow customers to enter any optional extras
+# Allow customers to enter any optional extras and loops until customer is finished
 finished = False
 print("Please enter any optional extras you would like")
 while finished != True:
@@ -51,14 +53,67 @@ while finished != True:
     print("Type 6 if you are done entering extras, or would not like to add any")
     chosenExtra = input()
     if chosenExtra == "1":
-        pass
+        extrasPrice = extrasPrice + Prices["luxury seats"]
+        Purchase.append("Luxury Seats")
     elif chosenExtra == "2":
-        pass
+        extrasPrice = extrasPrice + Prices["satellite"]
+        Purchase.append("Satellite Navigation")
     elif chosenExtra == "3":
-        pass
+        extrasPrice = extrasPrice + Prices["sensors"]
+        Purchase.append("Parking Sensors")
     elif chosenExtra == "4":
-        pass
+        extrasPrice = extrasPrice + Prices["bluetooth"]
+        Purchase.append("Bluetooth Connectivity")
     elif chosenExtra == "5":
-        pass
+        extrasPrice = extrasPrice + Prices["sound"]
+        Purchase.append("Sound System")
     elif chosenExtra == "6":
         finished = True
+
+# Allow customers to enter the price of their trade in
+print("Did you trade in an old car? Please enter 1 if yes.")
+if input() == "1":
+    print("Please enter the offered price of your trade in,")
+    valid = False
+    while valid != True:
+        tradeInPrice = input()
+        try:
+            tradeInPrice = float(tradeInPrice)
+        except:
+            print("Invalid Input, price must be a number. Please try again.")
+        else:
+            if (tradeInPrice >= 10000) and (tradeInPrice <= 100000):
+                valid = True
+            else:
+                print("Invalid input, trade in price must be between Rs 10000 and Rs 100000. Please try again.")
+else:
+    None
+
+# Determine whether customer is a repeat customer and qualifies for discounts
+print("Are you a repeat customer? Please enter 1 for yes.")
+if input() == "1":
+    repeatCustomer = True
+else:
+    None
+
+# Calculate final price and print receipt
+totalPrice = newCarPrice + extrasPrice
+print("Receipt:")
+print("Car chosen: " + Purchase[0])
+print("Extras Chosen:")
+for i in range(1, len(Purchase)):
+    print(Purchase[i] + ",")
+print("Price of car and extras: " + str(totalPrice))
+if repeatCustomer == True:
+    # Apply 10% discount on car before trade in and 10% off optional extras offered to repeat customers
+    discounts = discounts + (newCarPrice * 0.1)
+    discounts = discounts + (extrasPrice * 0.1)
+    print("Repeat Customer discount: " + str(discounts))
+totalPrice = totalPrice - discounts
+if tradeInPrice == 0:
+    print("5% discount: " + str((totalPrice * 0.05)))
+    totalPrice = totalPrice - (totalPrice * 0.05)
+else:
+    print("Trade in discount: " + tradeInPrice)
+    totalPrice = totalPrice - tradeInPrice
+print("Final price to pay: " + str(totalPrice))
