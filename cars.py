@@ -137,3 +137,5 @@ totalPrice = totalPrice * 1.05
 print("Total amount to pay: " + str(totalPrice))
 print("Total number of payments: 84")
 print("Price of each payment: " + str(totalPrice / 84))
+print("Enter any key to exit the program")
+input()
