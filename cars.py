@@ -40,4 +40,25 @@ elif chosenCar == "3":
     Purchase.append("Estate")
 
 # Allow customers to enter any optional extras
+finished = False
 print("Please enter any optional extras you would like")
+while finished != True:
+    print("Type 1 for a set of Luxury Seats. Price: Rs 45000")
+    print("Type 2 for Satellite Navigation. Price: Rs 5500")
+    print("Type 3 for Parking sensors. Price: Rs 10000")
+    print("Type 4 for Bluetooth connectivity. Price: Rs 350")
+    print("Type 5 for a sound system. Price: Rs 1000")
+    print("Type 6 if you are done entering extras, or would not like to add any")
+    chosenExtra = input()
+    if chosenExtra == "1":
+        pass
+    elif chosenExtra == "2":
+        pass
+    elif chosenExtra == "3":
+        pass
+    elif chosenExtra == "4":
+        pass
+    elif chosenExtra == "5":
+        pass
+    elif chosenExtra == "6":
+        finished = True
