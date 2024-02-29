@@ -87,6 +87,7 @@ while True == True:
             valid = True
         else:
             print("Invalid input. Please try again.")
+    valid = False
     while valid != True:
         print("Please choose a RAM option:")
         print("Type 1 for 16GB")
@@ -102,6 +103,7 @@ while True == True:
             valid = True
         else:
             print("Invalid input. Please try again.")
+    valid = False
     while valid != True:
         print("Please choose a Storage option:")
         print("Type 1 for 1TB")
