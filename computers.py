@@ -119,4 +119,58 @@ while True == True:
             valid = True
         else:
             print("Invalid input. Please try again.")
+    valid = False
+    while valid != True:
+        print("Please choose a screen size:")
+        print("Type 1 for 19\"")
+        print("Type 2 for 23\"")
+        choice = input()
+        if choice == "1":
+            components.append("19\"")
+            computerPrice = computerPrice + component_prices["19\""]
+            valid = True
+        elif choice == "2":
+            components.append("23\"")
+            computerPrice = computerPrice + component_prices["23\""]
+            valid = True
+        else:
+            print("Invalid input. Please try again.")
+    valid = False
+    while valid != True:
+        print("Please choose a case size:")
+        print("Type 1 for a Mini Tower")
+        print("Type 2 for a Midi Tower")
+        choice = input()
+        if choice == "1":
+            components.append("Mini Tower")
+            computerPrice = computerPrice + component_prices["Mini Tower"]
+            valid = True
+        elif choice == "2":
+            components.append("Midi Tower")
+            computerPrice = computerPrice + component_prices["Midi Tower"]
+            valid = True
+        else:
+            print("Invalid input. Please try again.")
+    valid = False
+    while valid != True:
+        print("Please choose a number of USB ports:")
+        print("Type 1 for 2 ports")
+        print("Type 2 for 4 ports")
+        choice = input()
+        if choice == "1":
+            components.append("2 ports")
+            computerPrice = computerPrice + component_prices["2 ports"]
+            valid = True
+        elif choice == "2":
+            components.append("4 ports")
+            computerPrice = computerPrice + component_prices["4 ports"]
+            valid = True
+        else:
+            print("Invalid input. Please try again.")
+    inStock = True
+    for i in range(len(components)):
+        if component_stock[components[i]] <= 0:
+            inStock = False
+    if inStock == True:
+        pass
         
