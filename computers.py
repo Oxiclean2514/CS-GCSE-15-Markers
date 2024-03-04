@@ -1,5 +1,8 @@
+# computers.py
+# Written by Luca B
 # Import required modules
 from random import randint
+from datetime import date
 # Initialize required dictionaries, arrays and variables
 component_prices = {
     "p3" : 100,
@@ -18,7 +21,7 @@ component_prices = {
 }
 component_stock = {
     "p3" : 10,
-    "p5" : 12,
+    "p5" : 10,
     "p7" : 10,
     "16GB" : 10,
     "32GB" : 10,
@@ -46,17 +49,18 @@ def generate_order_number():
                 present = True
         if present == False:
             valid = True
-    order_numbers.append(orderNumber)
     return(orderNumber)
     
 # Start main loop
 while True == True:
-    # Obtain user input of which components they want to buy
-    print("Please choose a processor:")
-    print("Type 1 for p3")
-    print("Type 2 for p5")
-    print("Type 3 for p7")
-    choice = input()
+    # Obtain user input of which components they want to buy - code repeated for each component 
+    valid = False
+    while valid != True:
+        print("Please choose a processor:")
+        print("Type 1 for p3")
+        print("Type 2 for p5")
+        print("Type 3 for p7")
+        choice = input()
         if choice == "1":
             components.append("p3")
             computerPrice = computerPrice + component_prices["p3"]
@@ -167,10 +171,31 @@ while True == True:
             valid = True
         else:
             print("Invalid input. Please try again.")
-    inStock = True
+    
+    # Generate estimate
+    tempEstimateNumber = generate_order_number()
+    print("Estimate Number: " + tempEstimateNumber)
+    print("Components:")
     for i in range(len(components)):
-        if component_stock[components[i]] <= 0:
-            inStock = False
-    if inStock == True:
-        pass
-        
+        print(components[i] + ": $" + str(component_prices[components[i]]))
+        computerPrice = computerPrice+component_prices[components[i]]
+    print("Service Charge (20%): " + str(computerPrice*0.2))
+    computerPrice = computerPrice + (computerPrice*2)
+    print("Total Price: " + str(computerPrice))
+    print("Please enter 1 to place this order or anything else to cancel")
+    choice = input()
+    if choice == "1":
+        inStock = True
+        for i in range(len(components)):
+            if component_stock[components[i]] <= 0:
+                inStock = False
+        if inStock != True:
+            print("One or more components are not in stock. Please try again with different components.")
+            print("Press any key to return to menu")
+            input()
+        else:
+            for j in range(len(components)):
+                with component_stock[components[j]] as comp:
+                    comp = comp-1
+            order_numbers.append(tempEstimateNumber)
+            # Need to print the customer+shop copy final receipt
