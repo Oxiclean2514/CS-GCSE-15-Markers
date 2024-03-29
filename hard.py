@@ -19,9 +19,22 @@ def withdrawMoney(AccountID):
                 print("Amount must be a number")
             else:
                 valid = True
+        currentBalance = AccDetails[AccountID][1]
         overdraftLimit = AccDetails[AccountID][2]
         withdrawLimit = AccDetails[AccountID][3]
         if withdrawAmount > withdrawLimit:
             print("Error: Withdraw amount is above your withdraw limit")
+        elif (currentBalance-withdrawAmount) < overdraftLimit:
+            print("Error: Withdrawing this amount would take you over your overdraft limit")
         else:
-            pass
+            currentBalance = currentBalance-withdrawAmount
+            AccDetails[AccountID][1] = currentBalance
+            print("Money withdrawn successfully")
+
+def DepositMoney(AccountID):
+    pass
+
+
+print("Welcome to the banking system")
+while True:
+    pass     
