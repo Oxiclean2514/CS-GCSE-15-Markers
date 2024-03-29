@@ -12,7 +12,7 @@ def withdrawMoney(AccountID):
     print("Please enter the amount of money you would like to withdraw")
     while True:
         valid = False
-        if valid != True:
+        while valid != True:
             try:
                 withdrawAmount = float(input())
             except:
