@@ -18,3 +18,4 @@ A bunch of CIE Computer Science GCSE 15 markers for me to practice
 
 ## hard.py
 ![IMG_2533](https://github.com/Oxiclean2514/CS-GCSE-15-Markers/assets/149957643/e6424aa5-1226-4ea8-a1a8-660e68b931b1)
+![image](https://github.com/Oxiclean2514/CS-GCSE-15-Markers/assets/149957643/dbb81f6e-f721-49f8-8a85-6db684d6771d)
