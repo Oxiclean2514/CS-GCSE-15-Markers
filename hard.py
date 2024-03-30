@@ -6,6 +6,7 @@ Size = 5
 # Procedure to display balance
 def viewBalance(AccountID):
     print("Your balance is: " + AccDetails[AccountID][1])
+    return()
 
 # Procedure to withdraw money
 def withdrawMoney(AccountID):
@@ -33,9 +34,11 @@ def withdrawMoney(AccountID):
             currentBalance = currentBalance-withdrawAmount
             AccDetails[AccountID][1] = currentBalance
             print("Money withdrawn successfully")
-            break
+            return()
 
+# Function to allow depositing money
 def DepositMoney(AccountID):
+    print("Please enter the amount of money to deposit")
     pass
 
 
