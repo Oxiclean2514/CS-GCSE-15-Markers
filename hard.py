@@ -1,3 +1,5 @@
+# Maybe il finish this before the exam, maybe I wont 
+
 # Already initialized in question
 Account = [[]]
 AccDetails = [[]]
